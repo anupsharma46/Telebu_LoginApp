@@ -1,0 +1,29 @@
+<div class="container-fluid">    
+    <div class="row h-100 justify-content-center align-items-center">  
+        <div class="col-10 col-md-8 col-lg-6"> 
+         <h3>Log In</h3>        
+         <form [formGroup]="isloginService.loginForm" (ngSubmit)="isloginService.login()">    
+            <div class="form-group">  
+                <label for="userid">Username:</label>  
+                    <input type="text" class="form-control" formControlName="userid" />                      
+                    <div *ngIf="(isloginService.loginForm.get('userid').invalid && isloginService.loginForm.get('userid').touched)" class="text-danger">
+                        Please enter username!
+                    </div>  
+            </div>  
+            <div class="form-group">    
+                <label for="password">Password</label>    
+                    <input type="password" class="form-control" formControlName="password"/>    
+                    <div *ngIf="(isloginService.loginForm.get('password').invalid && isloginService.loginForm.get('password').touched)" class="text-danger">
+                        Please enter paswword!
+                    </div>   
+            </div>  
+            <p *ngIf="isloginService.message" class="text-center text-danger">{{isloginService.message}}</p> 
+            <div class="col-xs-12 form-group text-left">    
+                <button class="btn btn-primary" type="submit" [disabled]="isloginService.loginForm.invalid">Login</button>    
+            </div>  
+         </form>
+        </div>  
+        
+        
+    </div>    
+</div> 

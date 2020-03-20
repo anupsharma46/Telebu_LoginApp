@@ -1,0 +1,4 @@
+<app-header></app-header>
+<a class="cart" [routerLink]="['/cart']"><i class="fa fa-shopping-cart" style="font-size:36px"></i><span class="badge badge-light">{{totalQuantity}}</span></a>
+<app-product *ngFor="let product of products" [p_id]="product.p_id" [p_name]="product.p_name" [p_price]="product.p_price" [p_img_url]="product.p_img_url"></app-product>
+

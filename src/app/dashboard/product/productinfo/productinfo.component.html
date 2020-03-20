@@ -1,0 +1,19 @@
+<app-header></app-header>
+<a class="cart" [routerLink]="['/cart']"><i class="fa fa-shopping-cart" style="font-size:36px"></i><span class="badge badge-light">{{totalQuantity}}</span></a>
+
+<div class="row" *ngIf="prodName">
+    <div class="col">
+        <img  width="50%" height= "150px" [src]='prodName.p_img_url'>
+        <p style="text-align: center;">{{prodName.p_name}}</p> 
+    </div>
+    <div class="col">
+      <div>
+          <span> Price : {{prodName.p_price | currency}}</span>
+          <p>{{prodName.p_desc}}</p>
+          <button class='btn btn-success p-0'><a class ='btn' ><span (click)="this.cartService.addToCart(p_id)" class="la la-trash">Add to cart</span></a></button>
+      </div>
+    </div>
+</div>
+<div class="nav-bar">
+    <a routerLink="/dashboard">Back to Dashboard</a>
+</div>
