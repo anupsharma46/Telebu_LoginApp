@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import { Login } from 'src/app/interfaces/login';  
+import { Login } from '../interfaces/login';  
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Product } from 'src/app/interfaces/product';
-import {ProductService} from 'src/app/services/product.service'
+import { Product } from '../interfaces/product';
+import {ProductService} from '../services/product.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
