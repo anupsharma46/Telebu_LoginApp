@@ -14,6 +14,9 @@ export class ProductinfoComponent implements OnInit {
   prodName: Product;
   p_id: number;
   totalQuantity: number;
+  outOfStockBtn:boolean = false;
+  addCartBtn: string="Add to Cart";
+
   constructor(
      private router: Router,
      private route: ActivatedRoute, private location: Location,
@@ -25,9 +28,18 @@ ngOnInit(): void {
   this.route.params.subscribe(params => { this.p_id = +params['p_id']});
   this.productService.findProductbyRouteId(this.p_id);
   this.prodName= this.productService.prodName;
+  console.log(this.prodName.p_stock);
   }
 
   ngDoCheck() {
     this.totalQuantity = this.cartService.totalQuantity;
+
+    console.log(this.prodName.p_stock);
+
+    if(this.prodName.p_stock < 1)
+    {
+      this.outOfStockBtn= true;
+      this.addCartBtn="Out of Stock";
+    }
   }  
 }

@@ -21,8 +21,9 @@
         <td>{{item.quantity}}</td>
         <td>{{item.product.p_price * item.quantity}}</td>
         <td>
-            <a (click)="this.cartService.remove(item.product.p_id)">Delete</a>
+            <!-- <a class="deleteBtn" (click)="this.cartService.remove(item.product.p_id)">Delete</a> -->
         </td>
     </tr>
     <tr><td></td><td></td><td></td><td><p>Total</p></td><td>{{totalQuantity}}</td><td><p>{{total}}</p></td></tr>
 </table>
+<button class="btn btn-success float-right" (click)="buyNow()" [routerLink]="['/thankyou']" [disabled]='orderbtnVal' >Order Now</button>

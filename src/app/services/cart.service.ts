@@ -13,13 +13,17 @@ export class CartService {
   public totalQuantity: number;
   public loadProductId:number;
   public cartProduct:Product;
+  public tempProd: Product;
+
 
   constructor(private productService: ProductService) { }
 
   products = this.productService.getAllProduct();
 
   findProductId(p_id: number): number {
-      return this.products[this.getSelectedProductIndex(p_id)].p_id;
+	this.products[this.getSelectedProductIndex(p_id)].p_stock--;
+	  return this.products[this.getSelectedProductIndex(p_id)].p_id;
+	
   }
 
   private getSelectedProductIndex(p_id: number) {
@@ -45,6 +49,7 @@ private getProductIndex(testId: number) {
 }
 
   addToCart(id:number){
+
 	       if(id){
 				var item: Item = {
 				    product:undefined,
@@ -55,6 +60,7 @@ private getProductIndex(testId: number) {
 					let cart: any = [];
 					cart.push(JSON.stringify(item));
 					localStorage.setItem('cart', JSON.stringify(cart));
+					//console.log(this.tempProd.p_stock);
 				} else {
 					let cart: any = JSON.parse(localStorage.getItem('cart'));
 					let index: number = -1;
@@ -67,7 +73,7 @@ private getProductIndex(testId: number) {
 					}
 					if (index == -1) {
 						cart.push(JSON.stringify(item));
-						localStorage.setItem('cart', JSON.stringify(cart));
+						localStorage.setItem('cart', JSON.stringify(cart))
 					} else {
 						let item: Item = JSON.parse(cart[index]);
 						item.quantity += 1;
@@ -91,7 +97,6 @@ private getProductIndex(testId: number) {
 			 let item = JSON.parse(cart[i]);
 			 this.loadProductId = item.productId;
 			 this.cartProduct= this.findProduct(this.loadProductId);
-              console.log(this.cartProduct);
 				this.items.push({
 					product:  this.cartProduct,
 				    productId: item.productId,

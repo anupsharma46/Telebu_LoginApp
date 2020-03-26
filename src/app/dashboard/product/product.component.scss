@@ -10,3 +10,8 @@ p {
     padding: 0;
     margin:0;
 }
+
+.disableOutofStock{
+    background-color: #ddd;
+    pointer-events:none;
+}

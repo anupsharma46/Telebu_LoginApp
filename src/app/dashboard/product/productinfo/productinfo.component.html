@@ -3,14 +3,15 @@
 
 <div class="row" *ngIf="prodName">
     <div class="col">
-        <img  width="50%" height= "150px" [src]='prodName.p_img_url'>
+        <img  style="display: block; margin: 0 auto; padding: 10px;" width="50%" height= "150px" [src]='prodName.p_img_url'>
         <p style="text-align: center;">{{prodName.p_name}}</p> 
     </div>
     <div class="col">
       <div>
-          <span> Price : {{prodName.p_price | currency}}</span>
+          <span> Price : {{prodName.p_price}}</span>
           <p>{{prodName.p_desc}}</p>
-          <button class='btn btn-success p-0'><a class ='btn' ><span (click)="this.cartService.addToCart(p_id)" class="la la-trash">Add to cart</span></a></button>
+          <p>Availability : {{prodName.p_stock}}</p>
+          <button class='btn btn-success p-1' [disabled]='outOfStockBtn' (click)="this.cartService.addToCart(p_id)">{{addCartBtn}}</button>
       </div>
     </div>
 </div>

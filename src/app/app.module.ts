@@ -14,6 +14,7 @@ import { ProductComponent } from './dashboard/product/product.component';
 import { ProductinfoComponent } from './dashboard/product/productinfo/productinfo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { CartComponent } from './dashboard/product/cart/cart.component';
+import { ThankyouComponent } from './dashboard/product/thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CartComponent } from './dashboard/product/cart/cart.component';
     ProductComponent,
     ProductinfoComponent,
     PagenotfoundComponent,
-    CartComponent
+    CartComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,

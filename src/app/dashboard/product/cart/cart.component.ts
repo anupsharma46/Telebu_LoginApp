@@ -13,9 +13,16 @@ export class CartComponent implements OnInit {
 	public total: number;
 	public totalQuantity: number;
 	username: string;
+	orderbtnVal: boolean=true;
 
-	constructor(private activatedRoute: ActivatedRoute, public cartService: CartService) {
-	}
+	constructor(private activatedRoute: ActivatedRoute, public cartService: CartService) {}
+
+	buyNow(){
+		if(this.items){
+		localStorage.removeItem('cart');  
+		}
+		
+	 }
 
 	ngOnInit() {
 		this.username = localStorage.getItem('token');
@@ -23,13 +30,21 @@ export class CartComponent implements OnInit {
 			var id = params['p_id'];
 			this.cartService.addToCart(id);
 		});
-		this.items = this.cartService.items;
-		this.total = this.cartService.total;
-		this.totalQuantity = this.cartService.totalQuantity;
+		 this.items = this.cartService.items;
+		 this.total = this.cartService.total;
+	     this.totalQuantity = this.cartService.totalQuantity;
+		
+	
+	  
 	}
 
 	ngDoCheck() {
-		console.log("changes occurfed");
 		this.items = this.cartService.items;
+		this.total = this.cartService.total;
+		this.totalQuantity = this.cartService.totalQuantity;
+		if(this.totalQuantity){
+			this.orderbtnVal = false
+		}
+		
 	}
 }
